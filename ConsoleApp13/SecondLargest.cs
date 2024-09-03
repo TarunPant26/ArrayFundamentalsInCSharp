@@ -6,27 +6,35 @@ namespace ConsoleApp13
         public static void Main()
         {
             var numbers = new int[] { 2, 5, 7, 10, 12, 14, 15 };
+
+            var output = FindSecondLargest(numbers);
+
+            Console.WriteLine(output);
         }
 
         public static int FindSecondLargest(int[] numbers)
         {
             var largest = int.MinValue;
-            var seconLargest = int.MinValue;
+            var secondLargest = int.MinValue;
 
             foreach (var num in numbers)
             {
-                if(num > largest)
+                if (num > largest)
                 {
-                    seconLargest = largest;
+                    secondLargest = largest;
                     largest = num;
                 }
-                else if(seconLargest < num && num!=largest)
+                else if (num > secondLargest && num != largest)
                 {
-                    seconLargest = num;
+                    secondLargest = num;
                 }
             }
 
-            return seconLargest == int.MinValue ? -1 : seconLargest;
+            if (secondLargest != int.MinValue)
+            {
+                return secondLargest;
+            }
+            return -1;
         }
     }
 }
